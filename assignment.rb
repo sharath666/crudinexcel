@@ -1,6 +1,6 @@
 require 'csv'
 #table = CSV.parse(File.read("/home/sharath/sharath3.csv"), headers: true)
-
+require 'pry'
 @path
 class Product 
 attr_accessor :id, :name,:price
@@ -79,7 +79,7 @@ def delete_product(product_id)
   row_array = CSV.read(@path)
   new_array = row_array.delete_if { |row| row[0] ==product_id} # based on the product id we can delete the product
   p new_array
-  CSV.open(path,"w+") { |csv| row_array.each{|row| csv << row}}
+  CSV.open(@path,"w+") { |csv| row_array.each{|row| csv << row}}
 end
     
 def update_product(product_id)
